@@ -1,0 +1,17 @@
+问题现象：项目图标报错“Java compiler level does not match the version of the installed Java project facet.”。
+分析原因：根据错误信息的字面意思，应该是Java版本设定不一致的问题。而且这个Java版本跟Project安装的有关系。
+解决办法：
+既然是project出的问题，自然要从项目属性入手。其实很简单，
+右键项目“Properties”，在弹出的“Properties”窗口左侧，单击“Project Facets”，打开“Project Facets”页面。
+
+问题现象：项目中引入了jar，但web.xml缺报找不到类，
+原因分析：没有用到maven depandency
+解决办法：
+right click on your project and choose properties.
+click on Deployment Assembly.
+click add
+click on "Java Build Path Entries"
+select Maven Dependencies"
+click Finish.
+
+导入js报错building workspace失败，右键你的项目名找到properties点击-->>Builders-->>将JavaScript  Volidator勾掉即可。

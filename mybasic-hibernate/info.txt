@@ -1,0 +1,39 @@
+0、新建一个quickstart
+1、项目有感叹号存在，因为buildpath路径有问题，个别包不成功的引入。修改version就不报错了。
+2、在父模块配置jar，以及版本，在子模块引入相关包即可，子模块中不需要写version.
+3、JUNIT测试中，注入的是interface IUserDao,如果注入UserDao会报No qualifying bean of type。
+4、实体不mapping错误，实体没有加入注解。
+5、SessionFactory.getCurrentSession()得到同一个session会话. 
+该方式Hibernate会自动关闭session，但是事务控制仍然需要手动开始和提交。
+6、@service需引入spring-context
+7、解决-Dmaven.multiModuleProjectDirectory system property is not set. Check $M2_HOME environment variable and mvn script match. 
+	办法：1.添加M2_HOME的环境变量　
+		2.Preference->Java->Installed JREs->Edit 选择一个jdk,
+		      添加  -Dmaven.multiModuleProjectDirectory=$M2_HOME
+
+	
+跳过测试，在Pom中加入如下代码：
+	<build>
+		<plugins>
+			<plugin>    
+			    <groupId>org.apache.maven.plugins</groupId>    
+			    <artifactId>maven-compiler-plugin</artifactId>    
+			    <configuration>    
+			        <skip>true</skip>    
+			    </configuration>    
+			</plugin>    
+			<plugin>    
+			    <groupId>org.apache.maven.plugins</groupId>    
+			    <artifactId>maven-surefire-plugin</artifactId>    
+			    <configuration>    
+			        <skip>true</skip>    
+			    </configuration>    
+			</plugin>    
+		</plugins>
+	</build>
+
+
+
+修改项目默认编码，windows-preferences-general-workspace中的text file。
+如果项目编码改变了，而新建的java文件编码跟项目编码不一样，则将windows-preferences-general-content types中的
+java resouce file配置的编码去掉，让新建的文件默认编码为项目的编码
